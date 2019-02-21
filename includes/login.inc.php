@@ -37,12 +37,13 @@ if (isset($_POST['barnabe'])) {
 
         $_SESSION['nom'] = $result['USENOM'];
         $_SESSION['prenom'] = $result['USEPRENOM'];
+        $_SESSION['admin'] = $result['USEADMIN'];
         $hash = $result['USEPASSWORD'];
 
 
        if (password_verify($mdp, $hash)) {
             $_SESSION['login'] = 1;
-            $redirection = "<script>document.location.href='http://localhost/PHP1/'</script>";
+            $redirection = "<script>document.location.href='http://localhost/php-rfd/'</script>";
             echo $redirection;
         }
 

@@ -15,6 +15,14 @@
             }
             ?>
             <li><a href="index.php?page=contact">Contact</a></li>
+            <?php
+            if(isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
+                echo "<li><a href=\"index.php?page=ajouterproduit\">Ajouter un produit</a></li>";
+            }
+            else {
+                echo "<li><a href=\"index.php?page=logout\">Logout</a></li>";
+            }
+            ?>
         </ul>
     </nav>
 </header>

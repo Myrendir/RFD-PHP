@@ -55,7 +55,7 @@ if (isset($_POST['maurice'])) {
             $msg = "Inscription OK";
             $sujet = "Validation de votre inscription";
 
-            if (mail($mail, $sujet, $msg)) {
+           if (mail($mail, $sujet, $msg)) {
                 echo "Inscription OK";
             }
 
