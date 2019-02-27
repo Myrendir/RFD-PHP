@@ -27,7 +27,7 @@ if (isset($_POST['albator'])) {
             return $str;
         }
         $nomPhoto = str_replace(' ', '_', $nomPhoto);
-        $nomPhoto = str_replace("", '_', $nomPhoto);
+        $nomPhoto = str_replace(array(" ", "'", "\""), "_", $nomPhoto);
 
     }
     else {
