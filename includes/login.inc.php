@@ -30,8 +30,8 @@ if (isset($_POST['barnabe'])) {
     } else {
         echo "Test matching login/password";
 
-        $getDatas =  "SELECT * FROM t_users
-                        WHERE USEMAIL='". $mail . "'";
+        $getDatas = "SELECT * FROM t_users
+                        WHERE USEMAIL='" . $mail . "'";
 
         $result = $pdo->query($getDatas)->fetch(PDO::FETCH_ASSOC);
 
@@ -41,16 +41,14 @@ if (isset($_POST['barnabe'])) {
         $hash = $result['USEPASSWORD'];
 
 
-       if (password_verify($mdp, $hash)) {
+        if (password_verify($mdp, $hash)) {
             $_SESSION['login'] = 1;
             $redirection = "<script>document.location.href='http://localhost/php-rfd/'</script>";
             echo $redirection;
-        }
-
-        else {
+        } else {
             echo "L'adresse et le mot de passe ne correspondent pas.";
         }
-  }
+    }
 
 } else {
     require_once "frmLogin.php";

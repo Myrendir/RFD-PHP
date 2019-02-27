@@ -5,17 +5,36 @@ if (isset($_POST['albator'])) {
     $reference = isset($_POST['reference']) ? $_POST['reference'] : "";
     $nomProduit = isset($_POST['nomProduit']) ? $_POST['nomProduit'] : "";
     $prix = isset($_POST['prix']) ? $_POST['prix'] : "";
-    $photo = isset($_FILES['photo']);
+    //$photo = isset($_FILES['photo']);
     $nomPhoto = $_FILES['photo']['name'];
     $tyePhoto = $_FILES['photo']['type'];
     $tmpPhoto = $_FILES['photo']['tmp_name'];
     $errorPhoto = $_FILES['photo']['error'];
     $sizePhoto = $_FILES['photo']['size'];
 
-    debug($photo);
+    // debug($photo);
     $erreurs = array();
 
-    if (!(mb_strlen($reference) >= 2 && ctype_alpha($reference)))
+
+
+    if ($errorPhoto == 0) {
+        function suppr_accents($str, $encoding='utf-8')
+        {
+            $str = htmlentities($str, ENT_NOQUOTES, $encoding);
+            $str = preg_replace('#&([A-za-z])(?:acute|grave|cedil|circ|orn|ring|slash|th|tilde|uml);#', '\1', $str);
+            $str = preg_replace('#&([A-za-z]{2})(?:lig);#', '\1', $str);
+            $str = preg_replace('#&[^;]+;#', '', $str);
+            return $str;
+        }
+        $nomPhoto = str_replace(' ', '_', $nomPhoto);
+        $nomPhoto = str_replace("", '_', $nomPhoto);
+
+    }
+    else {
+        echo "<p>Morche pô</p>";
+    }
+
+   /* if (!(mb_strlen($reference) >= 2 && ctype_alpha($reference)))
         array_push($erreurs, "Veuillez saisir une référence correcte.");
 
     if (!(mb_strlen($nomProduit) >= 2 && ctype_alpha($nomProduit)))
@@ -59,7 +78,7 @@ if (isset($_POST['albator'])) {
             echo "Objet déjà dans la BDD";
         }
 
-    }
+    }*/
 } else {
     require_once "frmajouterProduit.php";
 }

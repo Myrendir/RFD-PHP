@@ -8,18 +8,15 @@
             <?php
             if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
                 echo "<li><a href=\"index.php?page=logout\">Logout</a></li>";
-            }
-
-            else {
+            } else {
                 echo "<li><a href=\"index.php?page=login\">Login</a></li>";
             }
             ?>
             <li><a href="index.php?page=contact">Contact</a></li>
             <?php
-            if(isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
+            if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
                 echo "<li><a href=\"index.php?page=ajouterproduit\">Ajouter un produit</a></li>";
-            }
-            else {
+            } else {
                 echo "<li><a href=\"index.php?page=logout\">Logout</a></li>";
             }
             ?>
